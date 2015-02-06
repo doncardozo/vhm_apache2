@@ -106,7 +106,7 @@ A
     private function writeFile() {
 
         $path = $this->getSite("sites-available");
-        if (!file_put_contents("{$path}/{$this->_server_name}", $this->getDefault()))
+        if (!file_put_contents("{$path}/{$this->_server_name}.conf", $this->getDefault()))
             throw new \Exception("Write file [fail]\n");
 
         echo "Write file [ok]\n";
@@ -114,7 +114,7 @@ A
 
     public function serverExist() {
 
-        if (file_exists("{$this->getSite("sites-available")}/{$this->_server_name}")) {
+        if (file_exists("{$this->getSite("sites-available")}/{$this->_server_name}.conf")) {
             return true;
         }
     }
@@ -122,7 +122,7 @@ A
     public function createServerBackup() {
 
         $path = $this->getSite("sites-available");
-        system("cp {$path}/{$this->_server_name} {$path}/{$this->_server_name}." . time(), $return);
+        system("cp {$path}/{$this->_server_name} {$path}/{$this->_server_name}.conf." . time(), $return);
         if ($return)
             throw new \Exception("Create backup [fail]\n");
 
@@ -139,11 +139,11 @@ A
 
     private function searchFileServer() {
 
-        exec("ls -l {$this->getSite('sites-available')} | egrep {$this->_server_name}.?+ | awk '{print $9}' ", $available, $return);
+        exec("ls -l {$this->getSite('sites-available')} | egrep {$this->_server_name}.conf.?+ | awk '{print $9}' ", $available, $return);
         if ($return)
             throw new \Exception("--- Error ocurred when search apache files.\n");
 
-        exec("ls -l {$this->getSite('sites-enabled')} | egrep {$this->_server_name}.?+ | awk '{print $9}' ", $enabled, $return);
+        exec("ls -l {$this->getSite('sites-enabled')} | egrep {$this->_server_name}.conf.?+ | awk '{print $9}' ", $enabled, $return);
         if ($return)
             throw new \Exception("--- Error ocurred when search apache files.\n");
 
@@ -180,7 +180,7 @@ A
     }
 
     private function a2ensite(){
-        system("a2ensite {$this->_server_name}", $return);
+        system("a2ensite {$this->_server_name}.conf", $return);
         if ($return)
             throw new \Exception("Activate server [fail]\n");
 
