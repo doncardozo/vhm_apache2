@@ -9,7 +9,7 @@ try {
     
     # Params control.
     if (empty($argv[1]) || empty($argv[2]))
-        throw new Exception("\tError: you must enter two params.\n\n");
+        throw new \Exception("\tError: you must enter two params.\n\n");
     
     $port = (!preg_match("/^\d{2,4}$/", $argv[3])) ? '80' : $argv[3];
     
@@ -24,6 +24,6 @@ try {
     
     $vhm->generate();        
     
-} catch (Exception $ex) {
+} catch (\Exception $ex) {
     echo $ex->getMessage();
 }

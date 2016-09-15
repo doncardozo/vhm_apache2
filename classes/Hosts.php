@@ -79,7 +79,7 @@ class Hosts implements InterfaceAction, InterfaceParams {
         if ($update) {
             # Check if is root
             if (!is_writable($this->_hosts))
-                throw new Exception("Error: you don't have permission to write this file!.\n"
+                throw new \Exception("Error: you don't have permission to write this file!.\n"
                 . "You must be edit manualy hosts file.\n");
 
             # /etc/hosts is updated.

@@ -14,7 +14,7 @@ spl_autoload_register(function( $class ) {
             
         include_once($file);
 
-    } catch (Exception $ex) {
+    } catch (\Exception $ex) {
         echo $ex->getMessage();
     }
     

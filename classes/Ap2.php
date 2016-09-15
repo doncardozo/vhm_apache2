@@ -134,7 +134,7 @@ A
     private function rmFiles($path, $files) {
         foreach ($files as $file) {
             if (!unlink("{$path}/$file"))
-                throw new Exception(" --- Error: cannot remove file.\n ---");
+                throw new \Exception(" --- Error: cannot remove file.\n");
         }
     }
 

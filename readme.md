@@ -9,13 +9,14 @@ and create register into hosts file.
 
 Use mode
 ------------
+To execute we need root permission.
 In project directory:
 
 <strong>To create virtual host</strong><br/>
-php generate.php \<virtual host name\> \<project path name\> \[\<ip\> \<port\>\] 
+sudo php generate.php \<virtual host name\> \<project path name\> \[\<ip\> \<port\>\] 
 
 <strong>To remove virtual host</strong><br/>
-php remove.php \<virtual host name\> 
+sudo php remove.php \<virtual host name\> 
 
 <strong>To list hosts file</strong><br/>
-php list.php
+sudo php list.php

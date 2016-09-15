@@ -8,7 +8,7 @@ try {
 
         # Params control.
     if (empty($argv[1]))
-        throw new Exception("\tError: no receive parameters.\n\n");
+        throw new \Exception("\tError: no receive parameters.\n\n");
     
     $vhm = new Vhm(array(
         'server_name' => $argv[1]
@@ -17,6 +17,6 @@ try {
     $vhm->remove();
 
     
-} catch (Exception $ex) {
+} catch (\Exception $ex) {
     echo $ex->getMessage();
 }

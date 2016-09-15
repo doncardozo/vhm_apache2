@@ -10,6 +10,6 @@ try {
     $vhm = new Vhm();    
     $vhm->listHosts();        
     
-} catch (Exception $ex) {
+} catch (\Exception $ex) {
     echo $ex->getMessage();
 }
