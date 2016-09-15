@@ -11,11 +11,11 @@ Use mode
 ------------
 In project directory:
 
-To create virtual host
+<strong>To create virtual host</strong><br/>
 php generate.php \<virtual host name\> \<project path name\> \[\<ip\> \<port\>\] 
 
-To remove virtual host
+<strong>To remove virtual host</strong><br/>
 php remove.php \<virtual host name\> 
 
-To list hosts file
+<strong>To list hosts file</strong><br/>
 php list.php
