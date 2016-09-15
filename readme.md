@@ -3,7 +3,7 @@ Virtual Host Manager
 
 Introduction
 ------------
-This is a system PHP CLI to manage virtual hosts with Apache 2.4 for Linux. 
+This is a PHP CLI system to manage virtual hosts with Apache 2.4 for Linux. 
 The system can help us to create virtual host file into Apache 2 directory 
 and create register into hosts file.
 
