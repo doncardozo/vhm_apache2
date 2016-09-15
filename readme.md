@@ -12,10 +12,10 @@ Use mode
 In project directory:
 
 To create virtual host
-php generate.php <virtual host name> <project path name> [<ip> <port>] 
+php generate.php \<virtual host name\> \<project path name\> \[\<ip\> \<port\>\] 
 
 To remove virtual host
-php remove.php <virtual host name> 
+php remove.php \<virtual host name\> 
 
 To list hosts file
 php list.php
