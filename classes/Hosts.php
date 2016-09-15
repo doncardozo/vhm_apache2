@@ -170,5 +170,15 @@ class Hosts implements InterfaceAction, InterfaceParams {
 
         echo "Update hosts file [ok]\n";
     }
+    
+    public function listHosts(){        
+        $arr_hosts = explode("\n", file_get_contents($this->_hosts));
+        foreach($arr_hosts as $host){
+            if($host == "") { 
+                break;
+            }
+            echo "{$host}\n";
+        }
+    }
 
 }

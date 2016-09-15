@@ -6,13 +6,15 @@ use classes\Hosts;
 
 class Vhm {
 
-    private $_conf = array();
+    private $_conf = array();    
+    private $ap2 = null;    
+    private $hosts = null;
 
-    public function __construct(array $config) {
+    public function __construct(array $config = []) {
         
-        # Config server name
-        if(!array_key_exists('server_name', $config))
-            throw new \Exception("--- Error: server name not found ---\n");
+        if(sizeof($config) == 0){
+            return false;
+        }
         
         $this->_conf['server_name'] = $config['server_name'];
         
@@ -23,54 +25,59 @@ class Vhm {
         $this->_conf['ip_address'] = $config['ip_address'];
         
         # Config port
-        $this->_conf['port'] = $config['port'];
-      
+        $this->_conf['port'] = $config['port'];        
     }
     
     public function generate(){
 
         # Check document root property
-        if(!array_key_exists('document_root', $this->_conf))
+        if(!array_key_exists('document_root', $this->_conf)){
             throw new \Exception("--- Error: document root not found ---\n");
+        }
         
-        $ap2 = new Ap2();
+        $this->ap2 = new Ap2();
 
-        $ap2->setParams(array(            
+        $this->ap2->setParams(array(            
                 'server_name' => $this->_conf['server_name'], 
                 'document_root' => $this->_conf['document_root'],
                 'port' => $this->_conf['port']
         ));
 
-        if($ap2->serverExist()){
-            $ap2->createServerBackup();
+        if($this->ap2->serverExist()){
+            $this->ap2->createServerBackup();
         }
         
-        $ap2->update(); 
+        $this->ap2->update(); 
         
-        $hosts = new Hosts();
+        $this->hosts = new Hosts();
 
-        $hosts->setParams(array(            
+        $this->hosts->setParams(array(            
                 'server_name' => $this->_conf['server_name'], 
                 'ip_address' => $this->_conf['ip_address'],
                 'port' => $this->_conf['port']
         ));
                 
-        $hosts->update();
+        $this->hosts->update();
         
         echo "Finish process ok.\n";
     }
 
     public function remove(){
         
-        $ap2 = new Ap2();
+        $this->ap2 = new Ap2();
 
-        $ap2->remove($this->_conf['server_name']); 
+        $this->ap2->remove($this->_conf['server_name']); 
         
-        $hosts = new Hosts();
+        $this->hosts = new Hosts();
                 
-        $hosts->remove($this->_conf['server_name']);
+        $this->hosts->remove($this->_conf['server_name']);
         
         echo "Finish process ok.\n";        
     }
 
+    public function listHosts(){
+        
+        $this->hosts = new Hosts();        
+        $this->hosts->listHosts();        
+    }
 }

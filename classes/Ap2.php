@@ -13,6 +13,7 @@ class Ap2 implements InterfaceAction, InterfaceParams {
     private $_server_name = null;
     private $_document_root = null;
     private $_port = null;
+    private $_ext = null;
 
     public function __construct() {
 
@@ -37,6 +38,7 @@ class Ap2 implements InterfaceAction, InterfaceParams {
         $this->_server_name = $params['server_name'];
         $this->_document_root = $params['document_root'];
         $this->_port = $params['port'];
+        $this->_ext = '.conf';
     }
 
     public function getDefault() {
